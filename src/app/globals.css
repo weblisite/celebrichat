@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+
+  --muted: 210 40% 96.1%;
+  --accent: 210 40% 96.1%;
+
+  --brand: 245 82% 67%;
+  --brand-foreground: 0 0% 98%;
+
+  --radius: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --muted: 215 14% 22%;
+    --accent: 215 14% 22%;
+
+    --brand: 245 82% 67%;
+    --brand-foreground: 0 0% 98%;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}
+
+/* Components */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+}
+.btn-primary {
+  @apply bg-brand text-brand-foreground hover:bg-brand/90;
+}
+
+.container-prose {
+  @apply prose prose-zinc max-w-none dark:prose-invert;
+}

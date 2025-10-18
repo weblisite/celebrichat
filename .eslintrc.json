@@ -1,0 +1,26 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals"],
+  "plugins": ["testing-library", "jest-dom"],
+  "env": {
+    "es2022": true,
+    "browser": true,
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"]
+      ,
+      "env": {
+        "jest": true
+      },
+      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
+    },
+    {
+      "files": ["playwright.config.*", "**/e2e/**"],
+      "env": {
+        "node": true
+      }
+    }
+  ]
+}
