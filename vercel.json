@@ -1,0 +1,15 @@
+{
+  "framework": "nextjs",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "${NEXT_PUBLIC_SITE_URL}",
+    "NEON_DATABASE_URL": "${NEON_DATABASE_URL}",
+    "NEON_AUTH_SECRET": "${NEON_AUTH_SECRET}",
+    "NEON_STORAGE_BUCKET": "${NEON_STORAGE_BUCKET}",
+    "NEON_STORAGE_REGION": "${NEON_STORAGE_REGION}",
+    "PAYSTACK_PUBLIC_KEY": "${PAYSTACK_PUBLIC_KEY}",
+    "PAYSTACK_SECRET_KEY": "${PAYSTACK_SECRET_KEY}"
+  }
+}
