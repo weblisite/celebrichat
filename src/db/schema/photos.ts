@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { index, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { boolean, index, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
 import { events } from './events';
 
 export const photos = pgTable(
@@ -11,6 +11,7 @@ export const photos = pgTable(
       .references(() => events.id, { onDelete: 'cascade', onUpdate: 'cascade' }),
     url: text('url').notNull(),
     caption: text('caption'),
+    isPublic: boolean('is_public').notNull().default(false),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => ({
