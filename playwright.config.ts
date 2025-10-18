@@ -15,6 +15,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || 'http://localhost:3000',
     trace: 'on-first-retry',
   },
+  globalSetup: './e2e/global-setup.ts',
   webServer: {
     command: 'npm run dev',
     url: 'http://localhost:3000',
