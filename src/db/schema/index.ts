@@ -7,3 +7,4 @@ export * from './bookings';
 export * from './payments';
 export * from './payouts';
 export * from './photos';
+export * from './notifications';
