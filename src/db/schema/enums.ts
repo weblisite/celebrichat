@@ -18,9 +18,11 @@ export const eventStatusEnum = pgEnum('event_status', ['draft', 'published', 'ca
 
 export const bookingStatusEnum = pgEnum('booking_status', ['pending', 'confirmed', 'cancelled', 'completed']);
 
-export const paymentProviderEnum = pgEnum('payment_provider', ['stripe', 'paypal', 'test']);
+// Include Paystack as a supported provider for fan payments
+export const paymentProviderEnum = pgEnum('payment_provider', ['stripe', 'paypal', 'paystack', 'test']);
 
-export const paymentStatusEnum = pgEnum('payment_status', ['pending', 'succeeded', 'failed', 'refunded']);
+// Include 'initialized' to represent a created-but-not-completed transaction
+export const paymentStatusEnum = pgEnum('payment_status', ['initialized', 'pending', 'succeeded', 'failed', 'refunded']);
 
 // Added 'ready' state to support admin review before payout is paid
 export const payoutStatusEnum = pgEnum('payout_status', ['pending', 'ready', 'paid', 'failed']);
