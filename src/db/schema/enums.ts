@@ -22,4 +22,5 @@ export const paymentProviderEnum = pgEnum('payment_provider', ['stripe', 'paypal
 
 export const paymentStatusEnum = pgEnum('payment_status', ['pending', 'succeeded', 'failed', 'refunded']);
 
-export const payoutStatusEnum = pgEnum('payout_status', ['pending', 'paid', 'failed']);
+// Added 'ready' state to support admin review before payout is paid
+export const payoutStatusEnum = pgEnum('payout_status', ['pending', 'ready', 'paid', 'failed']);

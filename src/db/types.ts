@@ -9,6 +9,7 @@ import {
   payments,
   payouts,
   photos,
+  payoutNotifications,
 } from './schema';
 
 // Zod schemas derived from Drizzle tables
@@ -51,3 +52,8 @@ export const insertPhotoSchema = createInsertSchema(photos);
 export const selectPhotoSchema = createSelectSchema(photos);
 export type InsertPhoto = z.infer<typeof insertPhotoSchema>;
 export type Photo = z.infer<typeof selectPhotoSchema>;
+
+export const insertPayoutNotificationSchema = createInsertSchema(payoutNotifications);
+export const selectPayoutNotificationSchema = createSelectSchema(payoutNotifications);
+export type InsertPayoutNotification = z.infer<typeof insertPayoutNotificationSchema>;
+export type PayoutNotification = z.infer<typeof selectPayoutNotificationSchema>;
