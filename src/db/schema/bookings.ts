@@ -1,5 +1,5 @@
 import { relations } from 'drizzle-orm';
-import { index, integer, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { boolean, index, integer, pgTable, text, timestamp, uuid, uniqueIndex } from 'drizzle-orm/pg-core';
 import { events } from './events';
 import { users } from './users';
 import { bookingStatusEnum } from './enums';
@@ -17,6 +17,8 @@ export const bookings = pgTable(
     status: bookingStatusEnum('status').notNull().default('pending'),
     quantity: integer('quantity').notNull().default(1),
     totalCents: integer('total_cents').notNull(),
+    isLiveChat: boolean('is_live_chat').notNull().default(false),
+    qrToken: text('qr_token'),
     notes: text('notes'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
@@ -25,10 +27,11 @@ export const bookings = pgTable(
     eventIdx: index('bookings_event_idx').on(t.eventId),
     userIdx: index('bookings_user_idx').on(t.userId),
     statusIdx: index('bookings_status_idx').on(t.status),
+    uniqByUserEventLiveChat: uniqueIndex('bookings_user_event_live_unique').on(t.userId, t.eventId, t.isLiveChat),
   }),
 );
 
-export const bookingsRelations = relations(bookings, ({ one, many }) => ({
+export const bookingsRelations = relations(bookings, ({ one }) => ({
   event: one(events, {
     fields: [bookings.eventId],
     references: [events.id],
